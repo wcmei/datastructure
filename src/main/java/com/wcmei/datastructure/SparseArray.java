@@ -6,14 +6,19 @@ package com.wcmei.datastructure;
  * @description
  */
 //稀疏数组
-class SparseArray {
+public class SparseArray {
     public static void main(String[] args) {
+        //原数组
         int[][] ints = new int[11][11];
         ints[1][2] = 1;
         ints[2][3] = 2;
+        //稀疏数组
         int[][] sparse = new int[getHasValueCount(ints) + 1][3];
+        //行
         sparse[0][0] = ints.length;
+        //列
         sparse[0][1] = ints[0].length;
+        //总有效数
         sparse[0][2] = getHasValueCount(ints);
         int row = 1;
         for (int i = 0; i < ints.length; i++) {

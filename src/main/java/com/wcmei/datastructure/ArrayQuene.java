@@ -6,7 +6,7 @@ package com.wcmei.datastructure;
  * @description
  */
 //数组队列
-class ArrayQuene {
+public class ArrayQuene {
     private int[] arr;
     private int maxSize;
     private int front;
@@ -42,6 +42,9 @@ class ArrayQuene {
     }
 
     public void show() {
+        for (int i = front+1; i < maxSize; i++) {
+            System.out.println("arr[" + i + "]=" + arr[i]);
+        }
     }
 
     public int headQuene() {

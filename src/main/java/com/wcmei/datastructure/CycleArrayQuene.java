@@ -5,7 +5,7 @@ package com.wcmei.datastructure;
  * @date 2020-01-09
  * @description
  */
-class CycleArrayQuene {
+public class CycleArrayQuene {
     private int[] arr;
     private int maxSize;
     private int front;
@@ -26,14 +26,9 @@ class CycleArrayQuene {
         //取余表示单个数组添加到的第几位
         //front表示单个数组中的刚刚取到第几位
         //两者相等，表示形成闭环，即已存满
-
-
-        //这里是判断rear是否在预留位置上。也可以用(front-1+maxSize)%maxSize==rear进行判断，
-        //预留位置可以理解为(front+队列实际空间)%maxSize的后一个位置,上面的(-1+maxSize)为队列实际空间
-//        return (rear + 1) % maxSize == front;
-        return (front - 1 + maxSize) % maxSize == rear;
+        //+1表示预留一个位置，因为一开始front和rear都是0，如果不这样一开始队列就是满的
+        return (rear + 1) % maxSize == front;
     }
-
 
     //有效数据个数
     public int size() {
@@ -58,8 +53,9 @@ class CycleArrayQuene {
     }
 
     public void show() {
-        for (int i = front; i <= size(); i++) {
-            System.out.println(arr[i]);
+        int size = size();
+        for (int i = front; i < front + size(); i++) {
+            System.out.println("arr[" + i % maxSize + "]=" + arr[i % maxSize]);
         }
     }
 
@@ -77,17 +73,25 @@ class CycleArrayQuene {
         return arr[rear - 1];
     }
 
-
     public static void main(String[] args) {
-        CycleArrayQuene cycleArrayQuene = new CycleArrayQuene(3);
+        CycleArrayQuene cycleArrayQuene = new CycleArrayQuene(10);
         cycleArrayQuene.addQuene(1);
         cycleArrayQuene.addQuene(2);
-
-        System.out.println("大小：" + cycleArrayQuene.size());
-        System.out.println(cycleArrayQuene.getQuene());
-        System.out.println("大小：" + cycleArrayQuene.size());
-        System.out.println("===========================");
-
+        cycleArrayQuene.addQuene(3);
+        cycleArrayQuene.addQuene(4);
+        cycleArrayQuene.addQuene(5);
+        cycleArrayQuene.addQuene(6);
+        cycleArrayQuene.addQuene(7);
+        cycleArrayQuene.addQuene(8);
+        cycleArrayQuene.addQuene(9);
+        cycleArrayQuene.getQuene();
+        cycleArrayQuene.getQuene();
+        cycleArrayQuene.addQuene(10);
+        cycleArrayQuene.addQuene(11);
+        System.out.println("开始循环遍历");
         cycleArrayQuene.show();
+        System.out.println("结束循环遍历");
+        System.out.println("头部为：" + cycleArrayQuene.headQuene());
+        System.out.println("尾部为：" + cycleArrayQuene.tailQuene());
     }
 }
