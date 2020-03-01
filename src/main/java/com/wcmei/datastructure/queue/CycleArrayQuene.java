@@ -1,4 +1,4 @@
-package com.wcmei.datastructure;
+package com.wcmei.datastructure.queue;
 
 /**
  * @author wcmei
