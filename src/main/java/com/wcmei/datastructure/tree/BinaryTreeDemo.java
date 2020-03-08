@@ -6,4 +6,8 @@ package com.wcmei.datastructure.tree;
  * @description
  */
 public class BinaryTreeDemo {
+
+    public static void main(String[] args) {
+
+    }
 }
